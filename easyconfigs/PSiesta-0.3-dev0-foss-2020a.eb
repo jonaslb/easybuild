@@ -1,0 +1,36 @@
+name = 'PSiesta'
+version = '0.3-dev0'
+
+local_gituser = "jonaslb"
+local_gitbranch = "meson"
+
+homepage = 'https://github.com/jonaslb/psiesta'
+description = """PSiesta provides a python interface to the Siesta DFT code."""
+
+easyblock="PythonPackage"
+use_pip = True
+
+toolchain = {'name': 'foss', 'version': '2020a'}
+toolchainopts = {'usempi': True}
+
+sources = [
+    "%s.zip" % local_gitbranch
+]
+source_urls = [
+    "https://github.com/%s/psiesta/archive/" % local_gituser
+]
+
+dependencies = [
+    ('Python', '3.8.2'),
+    ('SciPy-bundle', '2020.03', '-Python-3.8.2'),  # for mpi4py and numpy
+    # In principle also sisl but we wait for now
+    ('Siesta', '4.2-dev0', '-libsiesta201005'),
+]
+
+builddependencies = [
+    ('mesonpep517-bundle', '0.1.9999996', '-Python-3.8.2', ('GCCcore', '9.3.0')),
+    ('Ninja', '1.10.0', '', ('GCCcore', '9.3.0'))
+]
+
+moduleclass = 'phys'
+

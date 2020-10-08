@@ -1,0 +1,19 @@
+name = 'Siesta'
+version = '4.1-rc2'
+
+homepage = 'http://departments.icmab.es/leem/siesta'
+description = """SIESTA is both a method and its computer program implementation, to perform efficient electronic
+ structure calculations and ab initio molecular dynamics simulations of molecules and solids."""
+
+toolchain = {'name': 'foss', 'version': '2020a'}
+toolchainopts = {'usempi': True}
+
+sources = ['siesta-v%(version)s.tar.gz']
+source_urls = ['https://gitlab.com/siesta-project/siesta/-/archive/v%(version)s/']
+checksums = ['e0d65c984d5c11bd5fcad6741343f56a1a8347a7d8f4490ae5680c6661635560']
+
+dependencies = [('netCDF-Fortran', '4.5.2')]
+
+runtest = 'check'
+
+moduleclass = 'phys'

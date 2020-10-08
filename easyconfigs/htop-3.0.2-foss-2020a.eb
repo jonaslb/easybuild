@@ -1,0 +1,26 @@
+easyblock = 'ConfigureMake'
+
+name = 'htop'
+version = "3.0.2"
+
+homepage = 'http://hisham.hm/htop/'
+
+description = """An interactive process viewer for Unix"""
+
+toolchain = {'name': 'foss', 'version': '2020a'}
+
+source_urls = ['https://bintray.com/htop/source/download_file?file_path=']
+sources = ["htop-%(version)s.tar.gz"]
+
+dependencies = [
+    ('ncurses', '6.2'),
+]
+
+preconfigopts = 'LIBS="$LIBS -ltinfo"'
+
+sanity_check_paths = {
+    'files': ['bin/htop'],
+    'dirs': ['share'],
+}
+
+moduleclass = 'tools'

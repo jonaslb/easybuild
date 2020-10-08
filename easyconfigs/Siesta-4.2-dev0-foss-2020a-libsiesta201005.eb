@@ -1,0 +1,36 @@
+name = 'Siesta'
+version = '4.2-dev0'
+versionsuffix = '-libsiesta201005'
+easyblock="EB_Siesta"
+
+local_gituser = "jonaslb"
+local_githash = "79f10cf19287b16e034e5213e4f578021cc5b370"
+
+homepage = 'http://departments.icmab.es/leem/siesta'
+description = """SIESTA is both a method and its computer program implementation, to perform efficient electronic
+ structure calculations and ab initio molecular dynamics simulations of molecules and solids."""
+
+toolchain = {'name': 'foss', 'version': '2020a'}
+toolchainopts = {'usempi': True}
+
+sources = [
+    "siesta-%s.tar.gz" % local_githash
+]
+source_urls = [
+    "https://gitlab.com/%s/siesta/-/archive/%s/" % (local_gituser, local_githash)
+]
+
+dependencies = [
+    ('netCDF-Fortran', '4.5.2'),
+    ('ELPA', '2020.05.001'),
+]
+
+with_utils_names = (
+    "TS",
+)
+with_libsiesta = True
+
+#runtest = 'check'
+
+moduleclass = 'phys'
+
